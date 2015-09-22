@@ -10,8 +10,8 @@
 			{{csrf_field()}}
 
 			<div>
-				<label for="username">Username</label>
-				<input type="text" name="username" id="name" placeholder="Ash Ketchum" value="{{ old('name') }}">
+				<label for="name">Username</label>
+				<input type="text" name="name" id="name" placeholder="Ash Ketchum" value="{{ old('name') }}">
 				{{ $errors->first('name')}}
 			</div>
 			<div>

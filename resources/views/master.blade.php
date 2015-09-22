@@ -12,7 +12,7 @@
     <div class="row">
       <div class="columns">
         <nav>
-          <ul class="inline-list pull-1">
+          <ul class="inline-list">
             <li><a href="/">Home</a></li>
             <li><a href="/pokedex">Pokedex</a></li>
             <li><a href="/about">About</a></li>
