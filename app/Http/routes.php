@@ -14,3 +14,4 @@
 Route::get('/', 'HomeController@index');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::get('pokecentre', 'PokecentreController@index');
