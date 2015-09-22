@@ -24,4 +24,7 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 // Logout
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
+// Pokedex
+Route::get('pokedex', 'PokedexController@index');
+
 Route::get('pokecentre', 'PokecentreController@index');
