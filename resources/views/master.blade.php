@@ -18,10 +18,17 @@
             <li><a href="/about">About</a></li>
             <li><a href="/contact">Contact</a></li>
             <li><a href="/faq">FAQ</a></li>
+          
+          @if( Auth::check())
             <li><a href="/auth/register">Register</a></li>
             <li><a href="/auth/login">Login</a></li>
+          
+          @else
             <li><a href="/pokecentre">Pokecentre</a></li>
             <li><a href="/auth/logout">Logout</a></li>
+          
+          @endif
+          
           </ul>
         </nav>
       </div>

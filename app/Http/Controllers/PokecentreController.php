@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+// Added, make life easier
+use App\User;
+
 class PokecentreController extends Controller
 {   
 
@@ -18,8 +21,12 @@ class PokecentreController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('pokecentre.index');
+    {   
+
+        // Find out haw manty registered trainers there are
+        $totalTrainers = User::all()->count();
+
+        return view('pokecentre.index', compact('totalTrainers'));
     }
 
     /**
