@@ -19,7 +19,8 @@
 				<li>Total number of captured Pokemon {{ $totalGlobalCaptures }}</li>
 			</ul>
 
-			<a href="/pokecentre/capture">Capture</a>
+			<a href="/pokecentre/capture" class="tiny button">Capture</a>
+			<a href="/pokecentre/captures" class="tiny button">See your captures ({{ $totalTrainerCaptures }})</a>
 			
 		</div>
 	</div>

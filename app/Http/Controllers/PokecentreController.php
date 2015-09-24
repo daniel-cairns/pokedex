@@ -59,14 +59,7 @@ class PokecentreController extends Controller
                             ->resize( 320,null,function($constraint){$constraint->aspectRatio();})
                             ->save( 'img/captures/'.$fileName);
 
-
-
-
         $capture->photo = $fileName;
-
-
-
-
 
         $capture->user_id = \Auth::user()->id;
         $capture->pokemon_id = $request->pokemon;
@@ -77,6 +70,52 @@ class PokecentreController extends Controller
         $pokemon = Pokemon::findOrFail($request->pokemon);
 
         return redirect('pokedex/'.$pokemon->name);
+    }
+
+    public function getCaptures()
+    {
+        $captures = Capture::where('user_id', \Auth::user()->id)->get();
+
+        return view('pokecentre.captures', compact('captures'));
+    } 
+
+    public function editCapture($id)
+    {
+        $capture = Capture::findOrFail($id);
+        $allPokemon = Pokemon::orderBy('name')->get();
+
+        return view('pokecentre.editCapture', compact('capture', 'allPokemon'));
+    }
+
+    public function updateCapture(Request $request, $id)
+    {
+        $this->validate($request,[
+            'pokemon'=>'required|exists:pokemon,id',
+            'photo'=>'image'
+        ]);
+
+       // Get info on the capture
+        $capture = Capture::findOrFail($id);
+            
+
+        if($request->hasFile('photo'))
+        {
+            // Generate a new file name
+            $fileName = uniqid().'.'.$request->file('photo')->getClientOriginalExtension();
+
+            \Image::make( $request->file('photo') )
+                            ->resize( 320,null,function($constraint){$constraint->aspectRatio();})
+                            ->save( 'img/captures/'.$fileName);
+
+            // Delete the old image
+            \File::Delete('img/captures/'.$capture->photo);
+
+            $capture->photo = $fileName;
+        }
+
+        $capture->save();
+
+        return redirect('pokecentre/captures');
     }
 
     /**
