@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation | Welcome</title>
+    <title>Pokedex | Catch'em all</title>
     <link rel="stylesheet" href="/css/foundation.css" />
     <script src="/js/vendor/modernizr.js"></script>
   </head>
@@ -19,7 +19,7 @@
             <li><a href="/contact">Contact</a></li>
             <li><a href="/faq">FAQ</a></li>
           
-          @if( Auth::check())
+          @if( !Auth::check())
             <li><a href="/auth/register">Register</a></li>
             <li><a href="/auth/login">Login</a></li>
           
